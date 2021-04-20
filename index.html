@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Hello Web</title>
+        <script>
+            function setText(){
+                fetch('http://localhost:3000/chat')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('hello-text').innerHTML = "Hello " + data;
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="setText()">Make Post</button>
+        <div id="hello-text">press "Load Data" button</div>
+    </body>
+</html>
