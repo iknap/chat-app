@@ -7,10 +7,12 @@
         body {
             background-color: rgb(163, 163, 238);
         }
+
         h1 {
             color: rgb(211, 83, 9);
             margin-left: 20px;
         }
+
         #text {
             min-height: 50px;
         }
@@ -18,7 +20,7 @@
 
     <script>
         async function getPosts() {
-            const response = await fetch('http://localhost:3000/hello');
+            const response = await fetch('http://localhost:3000/allPosts');
             const data = await response.text();
             let chats = JSON.parse(data);
             printTable(chats);
@@ -38,9 +40,35 @@
                 cell3.innerHTML = d.time;
             }
         }
+  
+        let maxRows = 12;
+        async function addPost(){
 
-        function clear() {
+            const response = await fetch('http://localhost:3000/lastPost');
+            const data = await response.text();
+            let lastPost = JSON.parse(data);
 
+        let Table = document.getElementById("table");
+        
+        if(maxRows <= 0){            
+            table.deleteRow(max);
+            var row = table.insertRow(3);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                cell1.innerHTML = lastPost.name;
+                cell2.innerHTML = lastPost.text;
+                cell3.innerHTML = lastPost.time;
+        } else {
+            var row = table.insertRow(0);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                cell1.innerHTML = lastPost.name;
+                cell2.innerHTML = lastPost.text;
+                cell3.innerHTML = lastPost.time;
+        }
+       
         }
     </script>
 </head>
@@ -48,20 +76,22 @@
 <body>
     <h1> Chat App</h1>
 
-    <button onclick="clearTable();">Clear</button>
-    <button onclick="getPosts();">Show Posts</button>
+    <button onclick="clearTable()";>Clear</button>
+    <button onclick="addPost();">Show </button>
+    <button onclick="getPosts();">Show all </button>
+   
 
     <table id="table">
         <tr>
-            <td> ... </td>
-            <td> ... </td>
+            <td>  </td>
+            <td>  </td>
         </tr>
     </table>
     <br>
 
     <form id="form">
         <input id="name" type="text" name="name" value="John"><br>
-        <input id="text" type="text" name="text" value="Smith"><br>
+        <input id="text" type="text" name="text" value="John s funny text"><br>
         <input type="submit">
     </form>
 
@@ -81,8 +111,13 @@
                     }
                 })
             });
-            getPosts()
+           getPosts();
         };
+
+        function clearTable() {
+            var Table = document.getElementById("table");
+            Table.innerHTML = "";
+        }
     </script>
 
 </body>

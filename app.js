@@ -5,17 +5,6 @@ const path = require('path');
 const app = express(); // instanciate express app
 const port = 3000;
 
-// var bodyParser = require('body-parser')
-
-// create application/json parser
-// var jsonParser = bodyParser.json()
-
-// create application/x-www-form-urlencoded parser
-// var urlencodedParser = bodyParser.urlencoded({
-//    extended: false
-//})
-
-
 let posts = [];
 let counter = 0;
 
@@ -27,7 +16,7 @@ app.use(express.json());
 
 // urlencodedParser
 app.get('/', function (req, res) { 
-    res.sendFile(path.join(__dirname + '/index.html'));
+    res.sendFile(path.join(__dirname + '/index.html'));    
 });
 
 app.post('/', function (request, response) {
@@ -37,19 +26,16 @@ app.post('/', function (request, response) {
         time: Date.now()
     };
     posts.push(chat)
-    console.log(posts)
+     console.log(posts)
 });
 
-app.get('/hello', (req, res) => { // return random name
-   /*  const names = ['Klaus', 'Bokhee', 'Dan', 'Marcella', 'Sabrina', 'Daniel'];
-    let chat = {
-        name: names[counter],
-        time: "500"
-    };
-    posts.push(chat)
-    counter++;
-    */
+app.get('/allPosts', (req, res) => { 
     res.send(posts);
+
+});
+
+app.get('/lastPost', (req, res) => { 
+    res.send(posts[posts.length-1]);
 });
 
 app.listen(port, () => { // listen to port on host
