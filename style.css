@@ -1,0 +1,81 @@
+
+
+
+
+
+body {
+    background: linear-gradient(180deg, #2EC4B6, #9EB1E9);
+  overflow-x: hidden;
+}
+h1 {
+    position:relative; left:20%; top:10%;
+    animation:typewriter 3s steps(9) 0.5s 1 normal both,
+    blinkTextCursor 700ms steps(9) infinite normal;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: consolas;
+    border-right: 4px solid black;
+    width: 9ch;
+}
+#text {
+    min-height: 50px;
+}
+table{
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.329);
+  width: 60%;
+  height: 80%;
+  border-radius: 0.2em;
+  box-shadow: 1px 1px 12px rgba(98, 33, 158, 0.952);
+}
+
+
+
+
+button  {
+    display: block;
+    margin-bottom: 2mm;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 150px;
+    height: 35px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+    background-size: 400%;
+    border-radius: 30px;
+
+}
+button:hover{
+    animation: animate 8s linear infinite;
+}
+
+
+ 
+@keyframes typewriter{
+    from{width: 0;}
+    to{width: 9ch;}
+  }
+  @keyframes blinkTextCursor{
+    from{border-right-color: rgba(211, 210, 210, 0.349);}
+    to{border-right-color: black;}
+  }
+
+@keyframes animate {
+    0%{
+        background-position: 0%;
+    }
+    100% {
+        background-position: 400%;
+    }
+}
