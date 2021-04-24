@@ -4,46 +4,34 @@
     <title>Chat-App</title>
 
     <link rel="stylesheet" href="styles/mystyle.css">
-    <script src="scripts/handlePosts.js"></script>
+    <script src="scripts/apiHandler.js"></script>
+    <script src="scripts/view.js"></script>
 
-    <script>
-        async function getPosts() {
-            const response = await fetch('http://localhost:3000/allPosts');
-            const data = await response.json();
-            printTable(data);
+    <style>
+        tr {min-height: 5%;}
+        #tableWrapper {
+            height: 500px;
+            overflow-y: auto;
+                overflow-x: hidden;
         }
-
-        function printTable(data) {
-            var Table = document.getElementById("table");
-            Table.innerHTML = "";
-            for (let d of data) {
-                var table = document.getElementById("table");
-                var row = table.insertRow(0);
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                var cell3 = row.insertCell(2);
-                cell1.innerHTML = d.name;
-                cell2.innerHTML = d.text;
-                cell3.innerHTML = formatDate(d.time);
-            }
-        }
-    </script>
+    </style>
 </head>
 
-<body>
+<body onload="getName();">
     <h1> Chat App</h1>
 
     <button onclick="clearTable()" ;>Clear</button>
     <button onclick="addPost();">Show </button>
     <button onclick="getPosts();">Show all </button>
 
-    <table id="table">
-        <tr>
-            <td> </td>
-            <td> </td>
-        </tr>
-    </table>
-    <br>
+    <div id="tableWrapper">
+        <table id="table">
+            <tr>
+                <td> </td>
+                <td> </td>
+            </tr>
+        </table>
+    </div>
 
     <form id="form">
         <input id="name" type="text" name="name" value="John"><br>
@@ -54,39 +42,9 @@
     <script>
         form.onsubmit = async (e) => {
             e.preventDefault();
-
-            fetch('/post', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    post: {
-                        name: document.forms["form"]["name"].value,
-                        text: document.forms["form"]["text"].value
-                    }
-                })
-            });
-            getPosts();
-        };
-
-        function clearTable() {
-            var Table = document.getElementById("table");
-            Table.innerHTML = "";
+            doPost();
         }
-
-        function formatDate(d){
-         let current = new Date(d);
-                let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
-                let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
-                let dateTime = cDate + ' ' + cTime;
-                // cell3.innerHTML = dateTime;
-
-                return dateTime;
-        }
-
     </script>
 
 </body>
-
 </html>
