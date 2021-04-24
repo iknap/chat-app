@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>Chat-App</title>
+
+    <link rel="stylesheet" href="styles/mystyle.css">
+    <script src="scripts/apiHandler.js"></script>
+    <script src="scripts/view.js"></script>
+
+    <style>
+        tr {min-height: 5%;}
+        #tableWrapper {
+            height: 500px;
+            overflow-y: auto;
+                overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body onload="getName();">
+    <h1> Chat App</h1>
+
+    <button onclick="clearTable()" ;>Clear</button>
+    <button onclick="addPost();">Show </button>
+    <button onclick="getPosts();">Show all </button>
+
+    <div id="tableWrapper">
+        <table id="table">
+            <tr>
+                <td> </td>
+                <td> </td>
+            </tr>
+        </table>
+    </div>
+
+    <form id="form">
+        <input id="name" type="text" name="name" value="John"><br>
+        <input id="text" type="text" name="text" value="John s funny text"><br>
+        <input type="submit">
+    </form>
+
+    <script>
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            doPost();
+        }
+    </script>
+
+</body>
+</html>
