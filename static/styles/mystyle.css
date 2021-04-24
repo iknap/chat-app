@@ -1,0 +1,13 @@
+
+body {
+    background-color: rgb(163, 163, 238);
+}
+
+h1 {
+    color: rgb(211, 83, 9);
+    margin-left: 20px;
+}
+
+#text {
+    min-height: 50px;
+}

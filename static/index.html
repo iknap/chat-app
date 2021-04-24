@@ -3,27 +3,14 @@
 <head>
     <title>Chat-App</title>
 
-    <style>
-        body {
-            background-color: rgb(163, 163, 238);
-        }
-
-        h1 {
-            color: rgb(211, 83, 9);
-            margin-left: 20px;
-        }
-
-        #text {
-            min-height: 50px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/mystyle.css">
+    <script src="scripts/handlePosts.js"></script>
 
     <script>
         async function getPosts() {
             const response = await fetch('http://localhost:3000/allPosts');
-            const data = await response.text();
-            let chats = JSON.parse(data);
-            printTable(chats);
+            const data = await response.json();
+            printTable(data);
         }
 
         function printTable(data) {
@@ -37,38 +24,8 @@
                 var cell3 = row.insertCell(2);
                 cell1.innerHTML = d.name;
                 cell2.innerHTML = d.text;
-                cell3.innerHTML = d.time;
+                cell3.innerHTML = formatDate(d.time);
             }
-        }
-  
-        let maxRows = 12;
-        async function addPost(){
-
-            const response = await fetch('http://localhost:3000/lastPost');
-            const data = await response.text();
-            let lastPost = JSON.parse(data);
-
-        let Table = document.getElementById("table");
-        
-        if(maxRows <= 0){            
-            table.deleteRow(max);
-            var row = table.insertRow(3);
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                var cell3 = row.insertCell(2);
-                cell1.innerHTML = lastPost.name;
-                cell2.innerHTML = lastPost.text;
-                cell3.innerHTML = lastPost.time;
-        } else {
-            var row = table.insertRow(0);
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                var cell3 = row.insertCell(2);
-                cell1.innerHTML = lastPost.name;
-                cell2.innerHTML = lastPost.text;
-                cell3.innerHTML = lastPost.time;
-        }
-       
         }
     </script>
 </head>
@@ -76,15 +33,14 @@
 <body>
     <h1> Chat App</h1>
 
-    <button onclick="clearTable()";>Clear</button>
+    <button onclick="clearTable()" ;>Clear</button>
     <button onclick="addPost();">Show </button>
     <button onclick="getPosts();">Show all </button>
-   
 
     <table id="table">
         <tr>
-            <td>  </td>
-            <td>  </td>
+            <td> </td>
+            <td> </td>
         </tr>
     </table>
     <br>
@@ -99,7 +55,7 @@
         form.onsubmit = async (e) => {
             e.preventDefault();
 
-            fetch('/', {
+            fetch('/post', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -111,13 +67,24 @@
                     }
                 })
             });
-           getPosts();
+            getPosts();
         };
 
         function clearTable() {
             var Table = document.getElementById("table");
             Table.innerHTML = "";
         }
+
+        function formatDate(d){
+         let current = new Date(d);
+                let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+                let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+                let dateTime = cDate + ' ' + cTime;
+                // cell3.innerHTML = dateTime;
+
+                return dateTime;
+        }
+
     </script>
 
 </body>

@@ -5,43 +5,40 @@ const path = require('path');
 const app = express(); // instanciate express app
 const port = 3000;
 
-let posts = [];
-let counter = 0;
-
-app.use(cors()); // enable CORS for all requests
-//app.use(express.urlencoded());
-
+// middleware searches for matching file in given folder -> in this case 'static'
+app.use(express.static('static'))
+// enable CORS for all requests
+app.use(cors());
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-// urlencodedParser
-app.get('/', function (req, res) { 
-    res.sendFile(path.join(__dirname + '/index.html'));    
+// In Memory DB
+let posts = [];
+
+// .json sends json
+app.get('/allPosts', (req, res) => {
+    res.json(posts);
 });
 
-app.post('/', function (request, response) {
+app.get('/lastPost', (req, res) => {
+    res.json(posts[posts.length - 1]);
+});
+
+app.post('/post', (req, res) => {
     let chat = {
-        name: request.body.post.name,
-        text: request.body.post.text,
+        name: req.body.post.name,
+        text: req.body.post.text,
         time: Date.now()
     };
     posts.push(chat)
-     console.log(posts)
+    res.status(204).end()
 });
 
-app.get('/allPosts', (req, res) => { 
-    res.send(posts);
-
-});
-
-app.get('/lastPost', (req, res) => { 
-    res.send(posts[posts.length-1]);
-});
+app.use((error, req, res) => {
+    console.log(error)
+    res.status(500).end()
+})
 
 app.listen(port, () => { // listen to port on host
     console.log(`Example app listening at http://localhost:${port}`);
 });
-
-function updatePosts() {
-
-}
