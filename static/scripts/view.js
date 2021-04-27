@@ -1,7 +1,7 @@
 function getName() {
-    var user = localStorage.getItem("chatAppUser");
-    user = (user == null) ? "" : user;
-    let name = prompt("Please enter your name:", user);
+    let user = localStorage.getItem("chatAppUser");
+    let name = (user == null) ? "" : user;
+    //let name = prompt("Please enter your name:", user);
     if (name != null && name != "") {
         document.forms["form"]["name"].value = name;
         localStorage.setItem("chatAppUser", name);

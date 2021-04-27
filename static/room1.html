@@ -5,8 +5,7 @@
 
     <link rel="stylesheet" href="styles/mystyle.css">
     <script src="scripts/apiHandler.js"></script>
-    <script src="scripts/login.js"></script>
-  
+    <script src="scripts/view.js"></script>
 
     <style>
         tr {min-height: 5%;}
@@ -21,23 +20,32 @@
     </style>
 </head>
 
-<body onload="getName();">  
+<body onload="getName();">
+    <h1> Room 1</h1>
 
-    <div>
+    <button onclick="clearTable()" ;>Clear</button>
+    <button onclick="addPost();">Last </button>
+    <button onclick="getPosts();">Show all </button>
+
+    <div id="tableWrapper">
+        <table id="table">
+            <tr>
+                <td> </td>
+                <td> </td>
+            </tr>
+        </table>
+    </div>
+<br>
     <form id="form">
-        <h3>Enter Username:</h3>
         <input id="name" type="text" name="name" value="John"><br>
-        <h3>Choose Room:</h3>
-        <input id="text" type="text" name="text" value="Room 1"><br>
-        <br>
-        <button type="submit">LOGIN </button>
+        <input id="text" type="text" name="text" value="My funny text"><br>
+        <input type="submit">
     </form>
-</div>
-    <h1> Lets chat</h1>
+
     <script>
         form.onsubmit = async (e) => {
             e.preventDefault();
-            login();
+            doPost();
         }
     </script>
 
