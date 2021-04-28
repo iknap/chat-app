@@ -1,8 +1,12 @@
-
 body {
-  background: linear-gradient(180deg, #2EC4B6, #9EB1E9);
-overflow-x: hidden;
+  background-image: url("../img/typewriter.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
 }
+
 h1 {
   position:relative; left:20%; top:10%;
   animation:typewriter 3s steps(9) 0.5s 1 normal both,
@@ -10,9 +14,11 @@ h1 {
   text-align: center;
   overflow: hidden;
   white-space: nowrap;
-  font-family: consolas;
+  font-family: 'Courier New', Courier, monospace;
   border-right: 4px solid black;
   width: 9ch;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
 }
 #text {
   min-height: 50px;
@@ -20,11 +26,12 @@ h1 {
 table{
 margin-left: auto;
 margin-right: auto;
-background: rgba(152, 52, 219, 0.137);
+background: rgba(19, 19, 19, 0.712);
 width: 60%;
-height: 80%;
+height: 100%;
 border-radius: 0.2em;
 box-shadow: 1px 1px 12px rgba(98, 33, 158, 0.425);
+font-family: 'Courier New', Courier, monospace;
 }
 .top-bar {
 position: relative;
@@ -98,13 +105,13 @@ box-shadow: 0 0 0 2px white, 0 9px 0 2px white, 0 -9px 0 2px white;
 tr{
 margin-top: 6%;
 display: inline-block;
-background-color:rgba(223, 65, 210, 0.521);
+background-color:rgba(255, 233, 253, 0.521);
 padding:10px;
 border-radius:40px;
 max-width:300px;
+min-height: 5%;
+font-family: 'Courier New', Courier, monospace;
 }
-
-
 
 button  {
   display: block;
@@ -123,7 +130,7 @@ button  {
   text-decoration: none;
   font-family: sans-serif;
   box-sizing: border-box;
-  background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+  background: linear-gradient(90deg,#03a9f4,#080072,#df5302,#03a9f4);
   background-size: 400%;
   border-radius: 30px;
 
@@ -134,18 +141,19 @@ button:hover{
 
 
 #form {
-position: relative; left: 21%; bottom: 9%;
+position: relative; left: 21%; bottom: 1%;
 width: 58%;
 }
 #form input[type=text] {
-background-color: rgba(161, 13, 63, 0.185);
+background-color: rgba(255, 255, 255, 0.555);
 width: 100%;
-border: 1px solid rgba(235, 75, 227, 0.199);
+border: 1px solid rgba(255, 0, 242, 0.199);
 border-radius: 100px;
 padding: 10px 100px 10px 20px; 
 line-height: 1;
 box-sizing: border-box;
 outline: none; 
+font-family: 'Courier New', Courier, monospace;
 }
 #form input[type=submit] {
 position: absolute;
@@ -153,21 +161,34 @@ right: 3px;
 top: 3px;
 bottom: 3px;
 border: 0;
-background-color:  #d1095ce3;
+background-color:  #ffffff;
 color: rgba(255, 255, 255, 0.993);
 outline: none;
 margin: 0;
 padding: 0 10px;
 border-radius: 100px;
 z-index: 2;
+font-family: 'Courier New', Courier, monospace;
 }
 
+#loginWrapper {
+  position: relative; left: 20%; bottom: 9%;
+  width: 58%;
+  margin-top: 17%;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
+.date {
+  font-size: xx-small;
+}
 
-
-
-
-
+#tableWrapper {
+  height: 300px;
+  overflow-y: auto;
+      overflow-x: hidden;
+}
 
 
 
