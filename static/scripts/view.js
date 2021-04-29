@@ -72,3 +72,13 @@ function formatDate(d) {
 
     return dateTime;
 }
+
+let idx = 0;
+async function updatePosts() {
+    const response = await fetch('http://localhost:3000/allPosts');
+    const data = await response.json();
+    if (data.length > idx) {
+        addPost();
+    }
+    idx = data.length;
+}
