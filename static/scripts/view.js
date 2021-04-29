@@ -47,8 +47,8 @@ async function addPost() {
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
-        cell1.innerHTML = "<b>" + lastPost.name + ": </b> " + "<br><span class='date'>" + formatDate(lastPost.time) +"</span>";
-        cell2.innerHTML = lastPost.text ;
+        cell1.innerHTML = "<b>" + lastPost.name + ": </b> " + "<br><span class='date'>" + formatDate(lastPost.time) + "</span>";
+        cell2.innerHTML = lastPost.text;
         cell3.innerHTML = "<br>";
     }
 }
@@ -66,9 +66,9 @@ function clearTable() {
 
 function formatDate(d) {
     let current = new Date(d);
-    let cDate =  (current.getMonth() + 1) + '-' + current.getDate();
+    let cDate = (current.getMonth() + 1) + '-' + current.getDate();
     let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
     let dateTime = cDate + ' ' + cTime;
- 
+
     return dateTime;
 }

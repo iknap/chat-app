@@ -17,28 +17,28 @@ let posts = [];
 
 // .json sends json
 app.get('/allPosts', (req, res) => {
-    res.json(posts);
+  res.json(posts);
 });
 
 app.get('/lastPost', (req, res) => {
-    res.json(posts[posts.length - 1]);
+  res.json(posts[posts.length - 1]);
 });
 
 app.post('/post', (req, res) => {
-    let chat = {
-        name: req.body.post.name,
-        text: req.body.post.text,
-        time: Date.now()
-    };
-    posts.push(chat)
-    res.status(204).end()
+  let chat = {
+    name: req.body.post.name,
+    text: req.body.post.text,
+    time: Date.now()
+  };
+  posts.push(chat)
+  res.status(204).end()
 });
 
 app.use((error, req, res) => {
-    console.log(error)
-    res.status(500).end()
+  console.log(error)
+  res.status(500).end()
 })
 
 app.listen(port, () => { // listen to port on host
-    console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at http://localhost:${port}`);
 });

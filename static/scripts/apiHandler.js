@@ -1,4 +1,3 @@
-
 async function getPosts() {
     const response = await fetch('http://localhost:3000/allPosts');
     const data = await response.json();
@@ -21,4 +20,3 @@ function doPost() {
     });
     addPost();
 }
-
